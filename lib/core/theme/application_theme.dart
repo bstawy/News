@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ApplicationTheme {
-  static const Color primaryColor = Color(0xff39A552);
+  static const Color primary = Color(0xff39A552);
 
   static ThemeData light = ThemeData(
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: const AppBarTheme(
-      backgroundColor: primaryColor,
+      backgroundColor: primary,
       elevation: 0,
       toolbarHeight: 75,
       iconTheme: IconThemeData(
@@ -25,6 +25,13 @@ class ApplicationTheme {
         fontWeight: FontWeight.w700,
       ),
     ),
+
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: primary,
+      primary: primary,
+      secondary: Color(0xff303030),
+    ),
+
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         color: Colors.white,
