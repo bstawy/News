@@ -8,7 +8,7 @@ class ApplicationTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: primaryColor,
       elevation: 0,
-      toolbarHeight: 150,
+      toolbarHeight: 75,
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
