@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/core/theme/application_theme.dart';
 import 'package:news/pages/home/home_view.dart';
 import 'package:news/pages/settings/settings_view.dart';
 import 'package:news/pages/splash/splash_view.dart';
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'News',
+      theme: ApplicationTheme.light,
+      themeMode: ThemeMode.light,
       initialRoute: SplashView.routeName,
       routes: {
         SplashView.routeName: (context) => const SplashView(),
