@@ -1,55 +1,58 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:news/models/category_model.dart';
 import 'package:news/pages/home/widgets/custom_drawer.dart';
 import 'package:news/pages/home/widgets/item_card.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   static const String routeName = 'home';
-  final List<ItemCard> itemCards = [
-    ItemCard(
-      color: const Color(0xFFC91C22),
+  const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  CategoryModel? selectedCategory;
+
+  final List<CategoryModel> categories = const [
+    CategoryModel(
+      id: 'Sports',
       title: 'Sports',
       imagePath: 'assets/images/sports.png',
-      index: 0,
-      onClicked: () {},
+      backgroundColor: Color(0xFFC91C22),
     ),
-    ItemCard(
-      color: const Color(0xFF003E90),
+    CategoryModel(
+      id: 'Politics',
       title: 'Politics',
       imagePath: 'assets/images/Politics.png',
-      index: 1,
-      onClicked: () {},
+      backgroundColor: Color(0xFF003E90),
     ),
-    ItemCard(
-      color: const Color(0xFFED1E79),
+    CategoryModel(
+      id: 'Health',
       title: 'Health',
       imagePath: 'assets/images/health.png',
-      index: 2,
-      onClicked: () {},
+      backgroundColor: Color(0xFFED1E79),
     ),
-    ItemCard(
-      color: const Color(0xFFCF7E48),
+    CategoryModel(
+      id: 'Business',
       title: 'Business',
       imagePath: 'assets/images/bussines.png',
-      index: 3,
-      onClicked: () {},
+      backgroundColor: Color(0xFFCF7E48),
     ),
-    ItemCard(
-      color: const Color(0xFF4882CF),
+    CategoryModel(
+      id: 'Environment',
       title: 'Environment',
       imagePath: 'assets/images/environment.png',
-      index: 4,
-      onClicked: () {},
+      backgroundColor: Color(0xFF4882CF),
     ),
-    ItemCard(
-      color: const Color(0xFFF2D352),
+    CategoryModel(
+      id: 'Science',
       title: 'Science',
       imagePath: 'assets/images/science.png',
-      index: 5,
-      onClicked: () {},
+      backgroundColor: Color(0xFFF2D352),
     ),
   ];
-
-  HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,33 +70,49 @@ class HomeView extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-        appBar: AppBar(title: const Text('News App')),
-        drawer: const CustomDrawer(),
-        body: Padding(
-          padding: EdgeInsets.only(
-              left: width * 0.08, right: width * 0.08, top: height * 0.03),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Pick your category \nof interest',
-                style: theme.textTheme.titleMedium,
-              ),
-              SizedBox(height: 10),
-              Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemBuilder: (context, index) {
-                    return itemCards[index];
-                  },
-                  itemCount: itemCards.length,
-                  padding: const EdgeInsets.all(0),
+        appBar: AppBar(
+          title: selectedCategory == null
+              ? const Text('News App')
+              : Text(selectedCategory!.title),
+        ),
+        drawer: CustomDrawer(selectedCategory: selectedCategory),
+        body: selectedCategory != null
+            ? Container()
+            : Padding(
+                padding: EdgeInsets.only(
+                    left: width * 0.08,
+                    right: width * 0.08,
+                    top: height * 0.03),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Pick your category \nof interest',
+                      style: theme.textTheme.titleMedium,
+                    ),
+                    const SizedBox(height: 10),
+                    Expanded(
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2),
+                        itemBuilder: (context, index) {
+                          return ItemCard(
+                            category: categories[index],
+                            index: index,
+                            onClicked: () {
+                              selectedCategory = categories[index];
+                              setState(() {});
+                            },
+                          );
+                        },
+                        itemCount: categories.length,
+                        padding: const EdgeInsets.all(0),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
-        ),
       ),
     );
   }
