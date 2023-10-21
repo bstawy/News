@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:news/models/category_model.dart';
 
 class ItemCard extends StatelessWidget {
-  final Color color;
-  final String title;
-  final String imagePath;
-  final int index;
+  final CategoryModel category;
   final Function() onClicked;
+  final int index;
+
   const ItemCard({
     super.key,
-    required this.color,
-    required this.title,
-    required this.imagePath,
-    required this.index,
+    required this.category,
     required this.onClicked,
+    required this.index,
   });
 
   @override
@@ -29,7 +27,7 @@ class ItemCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(5),
         decoration: BoxDecoration(
-          color: color,
+          color: category.backgroundColor,
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(25),
             topRight: const Radius.circular(25),
@@ -45,13 +43,13 @@ class ItemCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              imagePath,
+              category.imagePath,
               width: 100,
               height: 100,
               fit: BoxFit.cover,
             ),
             Text(
-              title,
+              category.title,
               style: theme.textTheme.titleSmall!.copyWith(color: Colors.white),
             ),
           ],
