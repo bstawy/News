@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
 class ApplicationTheme {
-  static const Color primaryColor = Color(0xff39A552);
+  static const Color primary = Color(0xff39A552);
 
   static ThemeData light = ThemeData(
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: const AppBarTheme(
-      backgroundColor: primaryColor,
+      backgroundColor: primary,
       elevation: 0,
-      toolbarHeight: 150,
+      toolbarHeight: 75,
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(15),
-          bottomRight: Radius.circular(15),
+          bottomLeft: Radius.circular(35),
+          bottomRight: Radius.circular(35),
         ),
       ),
       centerTitle: true,
@@ -25,6 +25,13 @@ class ApplicationTheme {
         fontWeight: FontWeight.w700,
       ),
     ),
+
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: primary,
+      primary: primary,
+      secondary: Color(0xff303030),
+    ),
+
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         color: Colors.white,
