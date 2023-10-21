@@ -19,12 +19,11 @@ class CustomDrawer extends StatelessWidget {
           Container(
             height: height * 0.1265,
             width: width,
+            alignment: Alignment.center,
             color: theme.colorScheme.primary,
-            child: Center(
-              child: Text(
-                'News App!',
-                style: theme.textTheme.titleLarge,
-              ),
+            child: Text(
+              'News App!',
+              style: theme.textTheme.titleLarge,
             ),
           ),
           Padding(
