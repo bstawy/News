@@ -75,7 +75,7 @@ class _HomeViewState extends State<HomeView> {
               ? const Text('News App')
               : Text(selectedCategory!.title),
         ),
-        drawer: CustomDrawer(selectedCategory: selectedCategory),
+        drawer: const CustomDrawer(),
         body: selectedCategory != null
             ? Container()
             : Padding(
