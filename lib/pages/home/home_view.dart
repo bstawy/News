@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/models/category_model.dart';
 import 'package:news/pages/home/widgets/custom_drawer.dart';
-import 'package:news/pages/home/widgets/item_card.dart';
+import 'package:news/pages/home/widgets/category_item.dart';
 import 'package:news/pages/settings/settings_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -101,7 +101,7 @@ class _HomeViewState extends State<HomeView> {
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2),
                         itemBuilder: (context, index) {
-                          return ItemCard(
+                          return CategoryItem(
                             category: categories[index],
                             index: index,
                             onClicked: () {
