@@ -1,8 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:news/models/category_model.dart';
 import 'package:news/pages/home/widgets/custom_drawer.dart';
-import 'package:news/pages/home/widgets/item_card.dart';
+import 'package:news/pages/home/widgets/category_item.dart';
+import 'package:news/pages/settings/settings_view.dart';
 
 class HomeView extends StatefulWidget {
   static const String routeName = 'home';
@@ -74,8 +74,20 @@ class _HomeViewState extends State<HomeView> {
           title: selectedCategory == null
               ? const Text('News App')
               : Text(selectedCategory!.title),
+          actions: [
+            (selectedCategory != null)
+                ? IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: () {},
+                  )
+                : const SizedBox(),
+          ],
         ),
-        drawer: const CustomDrawer(),
+        drawer: CustomDrawer(
+          title: selectedCategory?.title,
+          onCategoryClicked: onDrawerCategoryItemClicked,
+          onSettingsClicked: onDrawerSettingsItemClicked,
+        ),
         body: selectedCategory != null
             ? Container()
             : Padding(
@@ -97,12 +109,11 @@ class _HomeViewState extends State<HomeView> {
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2),
                         itemBuilder: (context, index) {
-                          return ItemCard(
+                          return CategoryItem(
                             category: categories[index],
                             index: index,
                             onClicked: () {
-                              selectedCategory = categories[index];
-                              setState(() {});
+                              onCategoryItemClicked(categories[index]);
                             },
                           );
                         },
@@ -115,5 +126,20 @@ class _HomeViewState extends State<HomeView> {
               ),
       ),
     );
+  }
+
+  onCategoryItemClicked(CategoryModel category) {
+    selectedCategory = category;
+    setState(() {});
+  }
+
+  onDrawerCategoryItemClicked() {
+    selectedCategory = null;
+    Navigator.pop(context);
+    setState(() {});
+  }
+
+  onDrawerSettingsItemClicked() {
+    Navigator.pushReplacementNamed(context, SettingsView.routeName);
   }
 }

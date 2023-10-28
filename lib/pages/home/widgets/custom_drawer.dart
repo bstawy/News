@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:news/models/category_model.dart';
+import 'package:news/pages/home/home_view.dart';
 import 'package:news/pages/home/widgets/drawer_item.dart';
 
+import '../../settings/settings_view.dart';
+
 class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+  final String? title;
+  Function onCategoryClicked;
+  Function onSettingsClicked;
+  CustomDrawer({
+    super.key,
+    this.title,
+    required this.onCategoryClicked,
+    required this.onSettingsClicked,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +34,9 @@ class CustomDrawer extends StatelessWidget {
             alignment: Alignment.center,
             color: theme.colorScheme.primary,
             child: Text(
-              'News App!',
+              (title != null)
+                  ? title!
+                  : 'News App!',
               style: theme.textTheme.titleLarge,
             ),
           ),
@@ -30,22 +44,26 @@ class CustomDrawer extends StatelessWidget {
             padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
-                DrawerItem(
-                  icon: Icons.list_rounded,
-                  title: 'Categories',
-                  onClicked: () {
-                    Navigator.pop(context);
+                GestureDetector(
+                  onTap: () {
+                    onCategoryClicked();
                   },
+                  child: const DrawerItem(
+                    icon: Icons.list_rounded,
+                    title: 'Categories',
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                DrawerItem(
-                  icon: Icons.settings,
-                  title: 'Settings',
-                  onClicked: () {
-                    Navigator.pop(context);
+                GestureDetector(
+                  onTap: () {
+                    onSettingsClicked();
                   },
+                  child: const DrawerItem(
+                    icon: Icons.settings,
+                    title: 'Settings',
+                  ),
                 ),
               ],
             ),

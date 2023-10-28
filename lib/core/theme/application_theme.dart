@@ -29,7 +29,7 @@ class ApplicationTheme {
     colorScheme: ColorScheme.fromSeed(
       seedColor: primary,
       primary: primary,
-      secondary: Color(0xff303030),
+      secondary: const Color(0xff303030),
     ),
 
     textTheme: const TextTheme(
