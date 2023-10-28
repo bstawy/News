@@ -74,11 +74,19 @@ class _HomeViewState extends State<HomeView> {
           title: selectedCategory == null
               ? const Text('News App')
               : Text(selectedCategory!.title),
+          actions: [
+            (selectedCategory != null)
+                ? IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: () {},
+                  )
+                : const SizedBox(),
+          ],
         ),
         drawer: CustomDrawer(
           title: selectedCategory?.title,
-           onCategoryClicked: onDrawerCategoryItemClicked,
-            onSettingsClicked: onDrawerSettingsItemClicked,
+          onCategoryClicked: onDrawerCategoryItemClicked,
+          onSettingsClicked: onDrawerSettingsItemClicked,
         ),
         body: selectedCategory != null
             ? Container()
@@ -134,5 +142,4 @@ class _HomeViewState extends State<HomeView> {
   onDrawerSettingsItemClicked() {
     Navigator.pushReplacementNamed(context, SettingsView.routeName);
   }
-
 }
