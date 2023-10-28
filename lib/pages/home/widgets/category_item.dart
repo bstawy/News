@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:news/models/category_model.dart';
 
-class ItemCard extends StatelessWidget {
+class CategoryItem extends StatelessWidget {
   final CategoryModel category;
   final Function() onClicked;
   final int index;
 
-  const ItemCard({
+  const CategoryItem({
     super.key,
     required this.category,
     required this.onClicked,
