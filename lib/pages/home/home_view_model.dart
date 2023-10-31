@@ -16,6 +16,7 @@ class HomeViewModel extends ChangeNotifier{
 
       if(response.status == "ok") {
         _sourcesList = response.sources;
+        notifyListeners();
       }
     } catch(e) {
       print(e.toString());
