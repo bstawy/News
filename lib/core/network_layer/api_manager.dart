@@ -7,12 +7,10 @@ import '../../models/article_model.dart';
 import '../../models/source_model.dart';
 
 class ApiManager {
-  static Future<SourceModel> fetchSource(String categoryId) async {
-
-    // create query parameters to filter api's response
+  static Future<SourceModel> fetchSources(String categoryId) async {
     Map<String, dynamic>? queryParameters = {
       "apiKey": Constants.apiKey,
-      "category": "categoryId",
+      "category": categoryId,
     };
 
     Uri uri = Uri.https(
@@ -23,11 +21,11 @@ class ApiManager {
 
     var response = await http.get(uri);
 
-    SourceModel sourceData = SourceModel.fromJson(jsonDecode(response.body));
+    SourceModel sourceModel = SourceModel.fromJson(jsonDecode(response.body));
 
     print(response.body);
 
-    return sourceData;
+    return sourceModel;
   }
 
   static Future<ArticlesModel> fetchArticles(String sourceId) async {

@@ -20,7 +20,7 @@ class _NewsViewState extends State<NewsView> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourceModel>(
-        future: ApiManager.fetchSource(widget.categoryModel.id),
+        future: ApiManager.fetchSources(widget.categoryModel.id),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text(snapshot.error.toString()));

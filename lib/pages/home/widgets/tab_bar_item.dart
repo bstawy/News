@@ -20,10 +20,10 @@ class TabBarItem extends StatelessWidget {
       alignment: Alignment.center,
       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
       decoration: BoxDecoration(
-        color: isSelected ? theme.primaryColor : Colors.white,
+        color: isSelected ? theme.colorScheme.primary : Colors.white,
         borderRadius: BorderRadius.circular(25),
         border: Border.all(
-          color: theme.primaryColor,
+          color: theme.colorScheme.primary,
           width: 2,
         ),
       ),
@@ -31,7 +31,7 @@ class TabBarItem extends StatelessWidget {
         title,
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: isSelected ? Colors.white : theme.primaryColor,
+          color: isSelected ? Colors.white : theme.colorScheme.primary,
           fontSize: 16,
           fontWeight: FontWeight.w700,
         ),

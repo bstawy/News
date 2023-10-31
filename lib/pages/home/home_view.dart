@@ -24,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
       backgroundColor: Color(0xFFC91C22),
     ),
     CategoryModel(
-      id: 'Politics',
+      id: 'General',
       title: 'Politics',
       imagePath: 'assets/images/Politics.png',
       backgroundColor: Color(0xFF003E90),
@@ -42,7 +42,7 @@ class _HomeViewState extends State<HomeView> {
       backgroundColor: Color(0xFFCF7E48),
     ),
     CategoryModel(
-      id: 'Environment',
+      id: 'Technology',
       title: 'Environment',
       imagePath: 'assets/images/environment.png',
       backgroundColor: Color(0xFF4882CF),
