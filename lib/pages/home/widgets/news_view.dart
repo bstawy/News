@@ -32,7 +32,7 @@ class _NewsViewState extends State<NewsView> {
         create: (context) => vm,
         builder: (context, child) {
           return Consumer<HomeViewModel>(
-            builder: (context, value, child) {
+            builder: (context, vm, child) {
               {
                 return (vm.sourcesList.isEmpty)
                     ? Center(
@@ -41,7 +41,7 @@ class _NewsViewState extends State<NewsView> {
                       )
                     : NewsDetails(
                         sourcesList: vm.sourcesList,
-                      );
+                );
               }
             },
           );
