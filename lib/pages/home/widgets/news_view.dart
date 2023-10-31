@@ -27,30 +27,24 @@ class _NewsViewState extends State<NewsView> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return ChangeNotifierProvider(
-      create: (context) => vm,
-      builder: (context, child) => NewsDetails(
-        sourcesList: vm.sourcesList,
-      ),
-    );
-
-    /*
-    return FutureBuilder<SourceModel>(
-        future: ApiManager.fetchSources(widget.categoryModel.id),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(child: Text(snapshot.error.toString()));
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-
-          SourceModel sourceModel = snapshot.data!;
-          return NewsDetails(
-            sourceModel: sourceModel,
+        create: (context) => vm,
+        builder: (context, child) {
+          return Consumer<HomeViewModel>(
+            builder: (context, value, child) {
+              {
+                return (vm.sourcesList.isEmpty)
+                    ? Center(
+                        child: CircularProgressIndicator(
+                            color: theme.colorScheme.primary),
+                      )
+                    : NewsDetails(
+                        sourcesList: vm.sourcesList,
+                      );
+              }
+            },
           );
-        });*/
+        });
   }
 }
