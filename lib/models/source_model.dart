@@ -1,49 +1,48 @@
 class SourceModel {
-  String? status;
-  List<Source>? sources;
+  String status;
+  List<Source> sources;
 
   SourceModel({
-    this.status,
-    this.sources,
+    required this.status,
+    required this.sources,
   });
 
   factory SourceModel.fromJson(Map<String, dynamic> json) {
     return SourceModel(
-      status: json['status'],
-      sources: List<Source>.from(
-        json['sources'].map(
+      status: json["status"],
+      sources: (json["sources"] as List).map(
           (e) => Source.fromJson(e),
-        ),
-      ),
+      ).toList(),
     );
   }
 }
 
 class Source {
-  String? id;
-  String? name;
-  String? description;
-  String? url;
-  String? category;
-  String? language;
-  String? country;
+  String id;
+  String name;
+  String description;
+  String url;
+  String category;
+  String language;
+  String country;
 
   Source({
-    this.id,
-    this.name,
-    this.description,
-    this.url,
-    this.category,
-    this.language,
-    this.country,
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.url,
+    required this.category,
+    required this.language,
+    required this.country,
   });
-  Source.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    description = json['description'];
-    url = json['url'];
-    category = json['category'];
-    language = json['language'];
-    country = json['country'];
-  }
+
+  factory Source.fromJson(Map<String, dynamic> json) => Source(
+    id: json["id"],
+    name: json["name"],
+    description: json["description"],
+    url: json["url"],
+    category: json["category"],
+    language: json["language"],
+    country: json["country"],
+  );
 }

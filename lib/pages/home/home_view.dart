@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:news/models/category_model.dart';
 import 'package:news/pages/home/widgets/custom_drawer.dart';
 import 'package:news/pages/home/widgets/category_item.dart';
+import 'package:news/pages/home/widgets/news_view.dart';
 import 'package:news/pages/settings/settings_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -89,7 +90,7 @@ class _HomeViewState extends State<HomeView> {
           onSettingsClicked: onDrawerSettingsItemClicked,
         ),
         body: selectedCategory != null
-            ? Container()
+            ? NewsView(categoryModel: selectedCategory!)
             : Padding(
                 padding: EdgeInsets.only(
                     left: width * 0.08,
