@@ -18,12 +18,6 @@ class ArticlesModel {
             ),
           )
           .toList();
-      /*
-      json['articles'].forEach((v) {
-        articles?.add(Articles.fromJson(v));
-      });
-
-       */
     }
   }
 }
