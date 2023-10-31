@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news/models/category_model.dart';
-import 'package:news/pages/home/home_view.dart';
 import 'package:news/pages/home/widgets/drawer_item.dart';
 
-import '../../settings/settings_view.dart';
 
 class CustomDrawer extends StatelessWidget {
   final String? title;

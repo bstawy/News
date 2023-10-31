@@ -15,9 +15,6 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery.of(context).size;
-    var width = mediaQuery.width;
-    var height = mediaQuery.height;
     var theme = Theme.of(context);
 
     return GestureDetector(
